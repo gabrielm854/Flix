@@ -14,12 +14,24 @@ class NowPlayingViewControlerViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [[String: Any]] = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewControlerViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         tableView.dataSource = self
+        fetchNowPlayingMovies()
         
+    }
+    
+    func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchNowPlayingMovies()
+    }
+    
+    func fetchNowPlayingMovies() {
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -33,14 +45,10 @@ class NowPlayingViewControlerViewController: UIViewController, UITableViewDataSo
                 print(error.localizedDescription)
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print(dataDictionary)
                 let movies = dataDictionary["results"] as! [[String: Any]]
-                for movie in movies {
-                    let title = movie["title"] as! String
-                    print(title)
-                self.movies = movies
-                self.tableView.reloadData()
-                }
+                    self.movies = movies
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
             }
         }
         task.resume()
