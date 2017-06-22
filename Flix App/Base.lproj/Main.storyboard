@@ -137,7 +137,7 @@
         <scene sceneID="TL6-7l-bPi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C1U-db-mQ7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="now_playing_tabbar_item" id="Kfn-ca-G1m"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" selectedImage="now_playing_tabbar_item" id="Kfn-ca-G1m"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tl1-RV-apP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -189,7 +189,7 @@
         <scene sceneID="TgZ-fF-cwn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cfG-yB-aV1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Superhero" selectedImage="superhero_tabbar_item" id="6Eh-mI-G7Y"/>
+                    <tabBarItem key="tabBarItem" title="Superhero" image="superhero_tabbar_item" selectedImage="superhero_tabbar_item" id="6Eh-mI-G7Y"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xCZ-7j-XFw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
