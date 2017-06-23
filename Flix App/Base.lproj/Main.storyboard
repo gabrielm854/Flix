@@ -170,21 +170,6 @@
             </objects>
             <point key="canvasLocation" x="87.5" y="150.5"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="zrt-nZ-AUB">
-            <objects>
-                <viewController id="bXf-V1-OWa" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GdR-OX-saC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="YJY-pM-gII"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hre-yV-cah" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="674.5" y="953.5"/>
-        </scene>
         <!--Superhero-->
         <scene sceneID="TgZ-fF-cwn">
             <objects>
@@ -196,9 +181,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bXf-V1-OWa" kind="relationship" relationship="rootViewController" id="KCn-De-980"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAM-5A-VPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

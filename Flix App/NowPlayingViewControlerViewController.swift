@@ -41,7 +41,14 @@ class NowPlayingViewControlerViewController: UIViewController, UITableViewDataSo
         let task = session.dataTask(with: request) { (data, respose, error) in
             //This will run when the network request returns
             if let error = error {
-                print(error.localizedDescription)
+                let alertController = UIAlertController(title: "Oi!", message: "You have no internet connection.", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "*passive aggressive* k", style: .cancel) {(action) in
+                
+                }
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true){
+                    
+                }
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 let movies = dataDictionary["results"] as! [[String: Any]]
