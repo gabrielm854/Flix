@@ -11,6 +11,7 @@ import UIKit
 class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var movies: [[String: Any]] = []
     
@@ -34,11 +35,13 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
             let posterURL = URL(string: baseURL + posterPathString)!
             cell.posterImageView.af_setImage(withURL: posterURL)
         }
+        activityIndicator.stopAnimating()
         return cell
     }
     
     func fetchNowPlayingMovies() {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        activityIndicator.startAnimating()
+        let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, respose, error) in
@@ -61,6 +64,17 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
             }
         }
         task.resume()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let item = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: item) {
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
