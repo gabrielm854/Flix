@@ -32,7 +32,6 @@ class NowPlayingViewControlerViewController: UIViewController, UITableViewDataSo
     }
     
 
-    
     func fetchNowPlayingMovies() {
         activityIndicator.startAnimating()
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
@@ -90,6 +89,7 @@ class NowPlayingViewControlerViewController: UIViewController, UITableViewDataSo
             detailViewController.movie = movie
         }
     }
+
     
     
     override func didReceiveMemoryWarning() {
